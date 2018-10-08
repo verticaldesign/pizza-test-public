@@ -1,16 +1,16 @@
 import React from "react";
 import { expect } from "code";
 import { shallow } from "enzyme";
-import LoadingOverlay from "../../Components/LoadingOverlay/LoadingOverlay";
+import PizzaBackground from "../../Components/PizzaBackground/PizzaBackground";
 
-describe("Given <LoadingOverlay>", () => {
+describe("Given <PizzaBackground>", () => {
   function renderComponent(props = {}) {
-    return shallow(<LoadingOverlay {...props} />);
+    return shallow(<PizzaBackground {...props} />);
   }
 
-  it("should have id of loading-overlay", () => {
+  it("should have id of pizza-background", () => {
     let component = renderComponent();
-    expect(component.is("#loading-overlay")).to.be.true();
+    expect(component.is("#pizza-background")).to.be.true();
   });
 
   describe("When loaded is true", () => {

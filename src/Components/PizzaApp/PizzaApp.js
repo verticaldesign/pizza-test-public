@@ -2,6 +2,7 @@ import React from "react";
 import "./PizzaApp.css";
 import { fetchPizzas } from "../../API/pizzaAPI";
 import PizzaList from "../PizzaList/PizzaList";
+import PizzaBackground from "../PizzaBackground/PizzaBackground.js";
 
 class PizzaApp extends React.Component {
   constructor(props) {
@@ -12,8 +13,10 @@ class PizzaApp extends React.Component {
     };
   }
   componentDidMount() {
-    fetchPizzas().then((result) =>
-      this.setState({ pizzas: result.pizzas, loaded:true })
+    fetchPizzas().then(result =>
+      setTimeout(() => {
+        this.setState({ pizzas: result.pizzas, loaded: true });
+      }, 2050)
     );
   }
 
@@ -21,6 +24,7 @@ class PizzaApp extends React.Component {
     return (
       <main>
         <PizzaList pizzas={this.state.pizzas} loaded={this.state.loaded} />
+        <PizzaBackground loaded={this.state.loaded} />
       </main>
     );
   }

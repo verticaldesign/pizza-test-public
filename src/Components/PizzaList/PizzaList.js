@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const PizzaList = props => {
-  return <div>{renderPizzaList(props.pizzas)}</div>;
+  if (props.loaded) {
+    return <div>{renderPizzaList(props.pizzas)}</div>;
+  } else {
+    return <div>loading</div>;
+  }
 };
 
 function renderPizzaList(pizzas) {
@@ -12,10 +16,12 @@ function renderPizzaList(pizzas) {
   return pizzaList;
 }
 PizzaList.defaultProps = {
-  pizzas: []
+  pizzas: [],
+  loaded: false
 };
 PizzaList.propTypes = {
-  pizzas: PropTypes.arrayOf(PropTypes.string)
+  pizzas: PropTypes.arrayOf(PropTypes.string),
+  loaded: PropTypes.bool
 };
 
 export default PizzaList;
