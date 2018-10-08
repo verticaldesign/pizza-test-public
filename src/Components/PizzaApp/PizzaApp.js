@@ -3,6 +3,7 @@ import "./PizzaApp.css";
 import { fetchPizzas } from "../../API/pizzaAPI";
 import PizzaList from "../PizzaList/PizzaList";
 import PizzaBackground from "../PizzaBackground/PizzaBackground.js";
+import SearchAndFilter from "../SortAndFilter/SortAndFilter";
 
 class PizzaApp extends React.Component {
   constructor(props) {
@@ -22,10 +23,13 @@ class PizzaApp extends React.Component {
 
   render() {
     return (
-      <main>
-        <PizzaList pizzas={this.state.pizzas} loaded={this.state.loaded} />
+      <div>
+        <main className='content-container'>
+          <SearchAndFilter loaded={this.state.loaded} />
+          <PizzaList pizzas={this.state.pizzas} loaded={this.state.loaded} />
+        </main>
         <PizzaBackground loaded={this.state.loaded} />
-      </main>
+      </div>
     );
   }
 }
