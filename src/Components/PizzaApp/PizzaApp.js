@@ -10,23 +10,30 @@ class PizzaApp extends React.Component {
     super(props);
     this.state = {
       pizzas: [],
-      loaded: false
+      loaded: false,
+      filterText: ""
     };
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
   componentDidMount() {
     fetchPizzas().then(result =>
-      setTimeout(() => {
-        this.setState({ pizzas: result.pizzas, loaded: true });
-      }, 2050)
+      this.setState({ pizzas: result.pizzas, loaded: true })
     );
+  }
+  handleFilterChange(res) {
+    this.setState({ filterText: res });
   }
 
   render() {
     return (
       <div>
-        <main className='content-container'>
-          <SearchAndFilter loaded={this.state.loaded} />
-          <PizzaList pizzas={this.state.pizzas} loaded={this.state.loaded} />
+        <main className="content-container">
+          <SearchAndFilter
+            loaded={this.state.loaded}
+            filterText={this.state.filterText}
+            handleFilterChange={this.handleFilterChange}
+          />
+          <PizzaList pizzas={this.state.pizzas} loaded={this.state.loaded} filterText={this.state.filterText} />
         </main>
         <PizzaBackground loaded={this.state.loaded} />
       </div>
