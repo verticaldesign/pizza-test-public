@@ -7,19 +7,20 @@ class PizzaApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pizzas: []
+      pizzas: [],
+      loaded: false
     };
   }
   componentDidMount() {
-    fetchPizzas().then(({ pizzas }) =>
-      this.setState({ pizzas })
+    fetchPizzas().then((result) =>
+      this.setState({ pizzas: result.pizzas, loaded:true })
     );
   }
 
   render() {
     return (
       <main>
-        <PizzaList pizzas={this.state.pizzas} />
+        <PizzaList pizzas={this.state.pizzas} loaded={this.state.loaded} />
       </main>
     );
   }
