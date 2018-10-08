@@ -1,27 +1,27 @@
 import React from "react";
 import "./PizzaApp.css";
-import {fetchPizzas} from "../../API/pizzaAPI"
+import { fetchPizzas } from "../../API/pizzaAPI";
+import PizzaList from "../PizzaList/PizzaList";
 
 class PizzaApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pizzas:[]
+      pizzas: []
     };
-
   }
   componentDidMount() {
-    fetchPizzas().then( pizzas =>
-      this.setState({ pizzas  })
-    )
-  }
-
-  renderPizzaList() {
-    let pizzaList = this.state.pizzas
+    fetchPizzas().then(({ pizzas }) =>
+      this.setState({ pizzas })
+    );
   }
 
   render() {
-    return <div>{this.renderPizzaList()}</div>;
+    return (
+      <main>
+        <PizzaList pizzas={this.state.pizzas} />
+      </main>
+    );
   }
 }
 

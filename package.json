@@ -6,7 +6,8 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.4",
-    "sinon": "^6.3.4"
+    "sinon": "^6.3.4",
+    "prop-types": "^15.6.2"
   },
   "devDependencies": {
     "code": "^5.2.0",
