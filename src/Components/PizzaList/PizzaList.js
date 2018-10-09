@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner.js";
 
 const PizzaList = props => {
   if (props.loaded) {
@@ -9,7 +10,12 @@ const PizzaList = props => {
       </div>
     );
   } else {
-    return <div className="pizza-list-container loading">loading</div>;
+    return (
+      <div className="pizza-list-container loading">
+        <LoadingSpinner />
+        loading
+      </div>
+    );
   }
 };
 
@@ -27,6 +33,11 @@ function renderPizzaList(pizzas, filterText, sorting) {
       </div>
     );
   });
+  if (pizzaList.length === 0) {
+    return (
+      <div className="empty-list">Sorry don't have any {filterText} pizzas</div>
+    );
+  }
   return pizzaList;
 }
 
