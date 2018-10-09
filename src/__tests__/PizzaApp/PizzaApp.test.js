@@ -31,6 +31,14 @@ describe("Given <PizzaApp>", () => {
     });
   });
 
+  describe("When handleSort is called ", () => {
+    it("should update state", () => {
+      let sortOrderPrevious = component.state().sortOrder;
+      component.instance().handleSort();
+      expect(component.state().sortOrder).to.not.equal(sortOrderPrevious);
+    });
+  });
+
   describe("When the fetchPizzas() is called", () => {
     let fetchPizzasStub;
     beforeEach(() => {

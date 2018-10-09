@@ -5,8 +5,8 @@ class SortAndFilter extends Component {
   handleChange = e => {
     this.props.handleFilterChange(e.target.value);
   };
-  handleSorting = e => {
-    e.preventDefault();
+  handleSort = e => {
+    //e.preventDefault();
     this.props.handleSort(e);
   };
   render() {
@@ -20,7 +20,7 @@ class SortAndFilter extends Component {
         />
         <button
           disabled={this.props.loaded ? null : "disabled"}
-          onClick={this.handleSorting}
+          onClick={this.handleSort}
         >
           Sort
         </button>

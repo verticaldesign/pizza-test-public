@@ -33,10 +33,18 @@ describe("Given <PizzaBackground>", () => {
 
   describe("When handleChange is called ", () => {
     let handleChangeSpy = sinon.spy();
-    it("should update state", () => {
+    it("should call handleChange", () => {
       component = renderComponent({ handleFilterChange: handleChangeSpy });
       component.find("input").simulate("change", { target: { value: "x" } });
       sinon.assert.calledOnce(handleChangeSpy);
+    });
+  });
+  describe("When handleSorting is called ", () => {
+    let handleSortSpy = sinon.spy();
+    it("should call handleSort", () => {
+      component = renderComponent({ handleSort: handleSortSpy });
+      component.find("button").simulate("click");
+      sinon.assert.calledOnce(handleSortSpy);
     });
   });
 });
