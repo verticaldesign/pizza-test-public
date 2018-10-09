@@ -1,6 +1,7 @@
 import React from "react";
 import { expect } from "code";
 import { shallow } from "enzyme";
+import sinon from "sinon";
 import SortAndFilter from "../../Components/SortAndFilter/SortAndFilter";
 
 describe("Given <PizzaBackground>", () => {
@@ -31,9 +32,12 @@ describe("Given <PizzaBackground>", () => {
   });
 
   describe("When handleChange is called ", () => {
+    let handleChangeSpy = sinon.spy();
     it("should update state", () => {
-      // component.instance().handleChange("xxx");
-      // expect(component.state().filterText).to.equal("xxx");
+      component = renderComponent({ handleFilterChange: handleChangeSpy });
+      component.find("input").simulate("change", { target: { value: "a" } });
+      component.find("input").simulate("change", { target: { value: "ddd" } });
+      sinon.assert.calledOnce(handleChangeSpy);
     });
   });
 });
