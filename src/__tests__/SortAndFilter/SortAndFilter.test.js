@@ -44,7 +44,9 @@ describe("Given <PizzaBackground>", () => {
     let handleSortSpy = sinon.spy();
     it("should call handleSort", () => {
       component = renderComponent({ handleSort: handleSortSpy });
-      component.find("button").simulate("click");
+      component.find("button").simulate("click", {
+        preventDefault: () => {}
+      });
       sinon.assert.calledOnce(handleSortSpy);
     });
   });

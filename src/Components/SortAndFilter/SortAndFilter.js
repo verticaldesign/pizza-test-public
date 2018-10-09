@@ -6,7 +6,7 @@ class SortAndFilter extends Component {
     this.props.handleFilterChange(e.target.value);
   };
   handleSort = e => {
-    //e.preventDefault();
+    e.preventDefault();
     this.props.handleSort(e);
   };
   render() {
