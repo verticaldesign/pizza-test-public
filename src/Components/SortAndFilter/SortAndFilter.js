@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { ReactComponent as PizzaIcon } from "../../Images/pizza-SVG.svg";
+import { ReactComponent as Breadstick } from "../../Images/breadsitck-SVG.svg";
 
 class SortAndFilter extends Component {
   handleChange = e => {
@@ -9,7 +11,17 @@ class SortAndFilter extends Component {
     e.preventDefault();
     this.props.handleSort(e);
   };
+  getSortState = () => {
+    if (this.props.sortOrder === 0) {
+      return "sort-indicator none";
+    } else if (this.props.sortOrder === 1) {
+      return "sort-indicator";
+    } else {
+      return "sort-indicator desc";
+    }
+  };
   render() {
+    let res = this.getSortState();
     return (
       <form className={this.props.loaded ? "" : "hidden"}>
         <input
@@ -23,6 +35,7 @@ class SortAndFilter extends Component {
           onClick={this.handleSort}
         >
           Sort
+          <PizzaIcon className={this.getSortState()} />
         </button>
       </form>
     );

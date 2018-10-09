@@ -43,6 +43,7 @@ class PizzaApp extends React.Component {
             filterText={this.state.filterText}
             handleFilterChange={this.handleFilterChange}
             handleSort={this.handleSort}
+            sortOrder={this.state.sortOrder}
           />
           <PizzaList
             pizzas={this.state.pizzas}

@@ -18,9 +18,10 @@ describe("Given <PizzaBackground>", () => {
     component = renderComponent();
     expect(component.find("input").length).to.equal(1);
   });
-  it("should have a button with text Sort", () => {
-    component = renderComponent();
-    expect(component.find("button").text()).to.equal("Sort");
+  it("should have a button with text Sort and no icon", () => {
+    component = renderComponent({ sortOrder: 0 });
+    expect(component.find("button").text()).to.contain("Sort");
+    expect(component.find(".sort-indicator.none").exists()).to.be.true();
   });
 
   describe("When list is not loaded", () => {
@@ -48,6 +49,14 @@ describe("Given <PizzaBackground>", () => {
         preventDefault: () => {}
       });
       sinon.assert.calledOnce(handleSortSpy);
+    });
+    it("should update the sort icon", () => {
+      component = renderComponent({ sortOrder: 1 });
+      expect(component.find(".sort-indicator").exists()).to.be.true();
+    });
+    it("should reverse the sort icon", () => {
+      component = renderComponent({ sortOrder: -1 });
+      expect(component.find(".sort-indicator.desc").exists()).to.be.true();
     });
   });
 });
