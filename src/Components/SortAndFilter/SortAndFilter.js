@@ -3,20 +3,28 @@ import PropTypes from "prop-types";
 
 class SortAndFilter extends Component {
   handleChange = e => {
-    console.log("this");
     this.props.handleFilterChange(e.target.value);
+  };
+  handleSorting = e => {
+    e.preventDefault();
+    this.props.handleSort(e);
   };
   render() {
     return (
-      <div className={this.props.loaded ? "" : "hidden"}>
+      <form className={this.props.loaded ? "" : "hidden"}>
         <input
           disabled={this.props.loaded ? null : "disabled"}
           type="text"
           onChange={this.handleChange}
           value={this.props.filterText}
         />
-        <button disabled={this.props.loaded ? null : "disabled"}>Sort</button>
-      </div>
+        <button
+          disabled={this.props.loaded ? null : "disabled"}
+          onClick={this.handleSorting}
+        >
+          Sort
+        </button>
+      </form>
     );
   }
 }

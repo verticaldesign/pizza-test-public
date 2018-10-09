@@ -11,9 +11,11 @@ class PizzaApp extends React.Component {
     this.state = {
       pizzas: [],
       loaded: false,
-      filterText: ""
+      filterText: "",
+      sortOrder: 0
     };
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
   componentDidMount() {
     fetchPizzas().then(result =>
@@ -22,6 +24,10 @@ class PizzaApp extends React.Component {
   }
   handleFilterChange(res) {
     this.setState({ filterText: res });
+  }
+  handleSort() {
+    let newOrder = this.state.sortOrder < 1 ? 1 : -1;
+    this.setState({ sortOrder: newOrder });
   }
 
   render() {
@@ -32,11 +38,13 @@ class PizzaApp extends React.Component {
             loaded={this.state.loaded}
             filterText={this.state.filterText}
             handleFilterChange={this.handleFilterChange}
+            handleSort={this.handleSort}
           />
           <PizzaList
             pizzas={this.state.pizzas}
             loaded={this.state.loaded}
             filterText={this.state.filterText}
+            sortOrder={this.state.sortOrder}
           />
         </main>
         <PizzaBackground loaded={this.state.loaded} />

@@ -30,5 +30,10 @@ describe("Given <PizzaBackground>", () => {
     });
   });
 
-  //describe("When ")
+  describe("When handleChange is called ", () => {
+    it("should update state", () => {
+      // component.instance().handleChange("xxx");
+      // expect(component.state().filterText).to.equal("xxx");
+    });
+  });
 });
