@@ -37,6 +37,34 @@ describe("Given ,<PizzaList>", () => {
         expect(renderedComponent.find(".pizza-item").length).to.equal(1);
       });
     });
+    describe("When sortOrder 1 is given", () => {
+      it("should sortOrder the list of pizzas", () => {
+        let renderedComponent = renderComponent({
+          pizzas: ["peperoni", "sss"],
+          sortOrder: 1
+        });
+        expect(
+          renderedComponent
+            .find(".pizza-item")
+            .first()
+            .text()
+        ).to.equal("peperoni");
+      });
+    });
+    describe("When sortOrder -1 is given", () => {
+      it("should sortOrder the list of pizzas", () => {
+        let renderedComponent = renderComponent({
+          pizzas: ["peperoni", "sss"],
+          sortOrder: -1
+        });
+        expect(
+          renderedComponent
+            .find(".pizza-item")
+            .first()
+            .text()
+        ).to.equal("sss");
+      });
+    });
   });
   describe("When pizzas are empty", () => {
     it("should display and empty list message", () => {
