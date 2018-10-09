@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class SortAndFilter extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-  // state = {
-  //   filterValue: ""
-  // };
   handleChange = e => {
     console.log("this");
     this.props.handleFilterChange(e.target.value);
