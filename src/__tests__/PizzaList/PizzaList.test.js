@@ -25,8 +25,17 @@ describe("Given ,<PizzaList>", () => {
   }
   describe("When pizzas are given", () => {
     it("should display the list of pizzas with class of pizza-item", () => {
-      let renderedComponent = renderComponent({ pizzas: ["peperoni", "sss"] });
+      let renderedComponent = renderComponent({ pizzas: ["pepperoni", "sss"] });
       expect(renderedComponent.find(".pizza-item").length).to.equal(2);
+    });
+    describe("When filterText is given", () => {
+      it("should filter the list of pizzas", () => {
+        let renderedComponent = renderComponent({
+          pizzas: ["peperoni", "sss"],
+          filterText: "sss"
+        });
+        expect(renderedComponent.find(".pizza-item").length).to.equal(1);
+      });
     });
   });
   describe("When pizzas are empty", () => {
