@@ -3,7 +3,7 @@ import "./PizzaApp.css";
 import { fetchPizzas } from "../../API/pizzaAPI";
 import PizzaList from "../PizzaList/PizzaList";
 import PizzaBackground from "../PizzaBackground/PizzaBackground.js";
-import SearchAndFilter from "../SortAndFilter/SortAndFilter";
+import SortAndFilter from "../SortAndFilter/SortAndFilter";
 
 class PizzaApp extends React.Component {
   constructor(props) {
@@ -28,12 +28,16 @@ class PizzaApp extends React.Component {
     return (
       <div>
         <main className="content-container">
-          <SearchAndFilter
+          <SortAndFilter
             loaded={this.state.loaded}
             filterText={this.state.filterText}
             handleFilterChange={this.handleFilterChange}
           />
-          <PizzaList pizzas={this.state.pizzas} loaded={this.state.loaded} filterText={this.state.filterText} />
+          <PizzaList
+            pizzas={this.state.pizzas}
+            loaded={this.state.loaded}
+            filterText={this.state.filterText}
+          />
         </main>
         <PizzaBackground loaded={this.state.loaded} />
       </div>
