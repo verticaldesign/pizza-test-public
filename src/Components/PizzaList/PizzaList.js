@@ -30,9 +30,9 @@ function renderPizzaList(pizzas, filterText, sortOrder) {
   if (sortOrder !== 0) {
     pizzaList.sort((a, b) => {
       if (sortOrder === 1) {
-        return a > b;
+        return a.toUpperCase() > b.toUpperCase();
       } else {
-        return b > a;
+        return b.toUpperCase() > a.toUpperCase();
       }
     });
   }
