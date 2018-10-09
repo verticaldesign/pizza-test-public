@@ -34,10 +34,20 @@ describe("Given <PizzaApp>", () => {
   });
 
   describe("When handleSort is called ", () => {
-    it("should update state", () => {
+    it("should change the sortOrder", () => {
       let sortOrderPrevious = component.state().sortOrder;
       component.instance().handleSort();
       expect(component.state().sortOrder).to.not.equal(sortOrderPrevious);
+    });
+    it("should set descending sortOrder", () => {
+      component.setState({ sortOrder: 1 });
+      component.instance().handleSort();
+      expect(component.state().sortOrder).to.equal(-1);
+    });
+    it("should set inverse sortOrder", () => {
+      component.setState({ sortOrder: 0 });
+      component.instance().handleSort();
+      expect(component.state().sortOrder).to.equal(1);
     });
   });
 

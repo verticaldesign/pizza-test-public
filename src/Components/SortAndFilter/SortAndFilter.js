@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { ReactComponent as PizzaIcon } from "../../Images/pizza-SVG.svg";
-import { ReactComponent as Breadstick } from "../../Images/breadsitck-SVG.svg";
 
 class SortAndFilter extends Component {
   handleChange = e => {
@@ -25,15 +24,11 @@ class SortAndFilter extends Component {
     return (
       <form className={this.props.loaded ? "" : "hidden"}>
         <input
-          disabled={this.props.loaded ? null : "disabled"}
           type="text"
           onChange={this.handleChange}
           value={this.props.filterText}
         />
-        <button
-          disabled={this.props.loaded ? null : "disabled"}
-          onClick={this.handleSort}
-        >
+        <button onClick={this.handleSort}>
           Sort
           <PizzaIcon className={this.getSortState()} />
         </button>

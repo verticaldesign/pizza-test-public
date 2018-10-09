@@ -24,12 +24,17 @@ describe("Given <PizzaBackground>", () => {
     expect(component.find(".sort-indicator.none").exists()).to.be.true();
   });
 
-  describe("When list is not loaded", () => {
-    it("should disable sort and input", () => {
+  describe("When the list is not loaded", () => {
+    it("should hide sort and input", () => {
       component = renderComponent({ loaded: false });
-      expect(component.find("button").is("[disabled]")).to.be.true();
-      expect(component.find("input").is("[disabled]")).to.be.true();
       expect(component.find("form").hasClass("hidden")).to.be.true();
+    });
+  });
+
+  describe("When the list is loaded", () => {
+    let newComponent = renderComponent({ loaded: true });
+    it("should show the form", () => {
+      expect(newComponent.find("form").props().className).to.equal("");
     });
   });
 
