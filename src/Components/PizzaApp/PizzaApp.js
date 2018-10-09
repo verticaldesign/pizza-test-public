@@ -26,8 +26,7 @@ class PizzaApp extends React.Component {
     this.setState({ filterText: res });
   }
   handleSort() {
-    let newOrder = this.state.sortOrder < 1 ? 1 : -1;
-    this.setState({ sortOrder: newOrder });
+    this.setState({ sortOrder: this.state.sortOrder < 1 ? 1 : -1 });
   }
 
   render() {

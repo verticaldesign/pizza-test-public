@@ -13,6 +13,7 @@ describe("Given <PizzaApp>", () => {
   it("should exist", () => {
     expect(component.exists()).to.be.true();
   });
+
   it("should have <PizzaBackground>", () => {
     expect(component.find("PizzaBackground").length).to.equal(1);
   });
@@ -20,6 +21,7 @@ describe("Given <PizzaApp>", () => {
   it("should have <SearchAndFilter>", () => {
     expect(component.find("SortAndFilter").exists()).to.true();
   });
+
   it("should have <PizzaList>", () => {
     expect(component.find("PizzaList").length).to.equal(1);
   });
