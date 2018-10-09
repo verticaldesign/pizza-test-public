@@ -13,7 +13,7 @@ const PizzaList = props => {
     return (
       <div className="pizza-list-container loading">
         <LoadingSpinner />
-        loading
+        <div>Loading</div>
       </div>
     );
   }
@@ -46,7 +46,9 @@ function renderPizzaList(pizzas, filterText, sortOrder) {
   });
   if (pizzaList.length === 0) {
     return (
-      <div className="empty-list">Sorry don't have any {filterText} pizzas</div>
+      <div className="empty-list">
+        Sorry don't have any <span className="u-bold">{filterText}</span> pizzas
+      </div>
     );
   }
   return pizzaList;
