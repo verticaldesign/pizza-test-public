@@ -35,8 +35,7 @@ describe("Given <PizzaBackground>", () => {
     let handleChangeSpy = sinon.spy();
     it("should update state", () => {
       component = renderComponent({ handleFilterChange: handleChangeSpy });
-      component.find("input").simulate("change", { target: { value: "a" } });
-      component.find("input").simulate("change", { target: { value: "ddd" } });
+      component.find("input").simulate("change", { target: { value: "x" } });
       sinon.assert.calledOnce(handleChangeSpy);
     });
   });
