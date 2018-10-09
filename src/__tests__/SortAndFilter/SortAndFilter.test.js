@@ -28,6 +28,7 @@ describe("Given <PizzaBackground>", () => {
       component = renderComponent({ loaded: false });
       expect(component.find("button").is("[disabled]")).to.be.true();
       expect(component.find("input").is("[disabled]")).to.be.true();
+      expect(component.find("form").hasClass("hidden")).to.be.true();
     });
   });
 
