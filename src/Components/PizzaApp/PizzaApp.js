@@ -36,7 +36,7 @@ class PizzaApp extends React.Component {
     }
     return (
       <div className="pizza-app-container">
-        <h1>Pizza Pizza</h1>
+        <h1 className={this.state.loaded ? "" : "hidden"}>Pizza Pizza</h1>
         <main className={containerClassNames}>
           <SortAndFilter
             loaded={this.state.loaded}

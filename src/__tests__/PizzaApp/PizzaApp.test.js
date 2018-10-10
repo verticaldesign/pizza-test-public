@@ -10,26 +10,28 @@ describe("Given <PizzaApp>", () => {
   beforeEach(() => {
     component = shallow(<PizzaApp />);
   });
-  it("should exist", () => {
-    expect(component.exists()).to.be.true();
-  });
 
   it("should have <PizzaBackground>", () => {
     expect(component.find("PizzaBackground").length).to.equal(1);
   });
-
   it("should have <SearchAndFilter>", () => {
     expect(component.find("SortAndFilter").exists()).to.true();
   });
-
   it("should have <PizzaList>", () => {
     expect(component.find("PizzaList").length).to.equal(1);
   });
-
   describe("When handleFilterChange is called ", () => {
     it("should update state", () => {
       component.instance().handleFilterChange("xxx");
       expect(component.state().filterText).to.equal("xxx");
+    });
+  });
+
+  describe("When component is not loaded", () => {
+    it("should remove loaded class on main and h1", () => {
+      component.setState({ loaded: false });
+      expect(component.find("main").hasClass("loading")).to.be.true();
+      expect(component.find("h1").hasClass("hidden")).to.be.true();
     });
   });
 
@@ -58,12 +60,25 @@ describe("Given <PizzaApp>", () => {
       fetchPizzasStub.resolves({ pizzas: ["test"] });
     });
     afterEach(() => {
-      fetchPizzasStub.reset();
+      fetchPizzasStub.restore();
     });
+
     it("should update state", async () => {
       await component.instance().componentDidMount();
       expect(component.state().pizzas).to.equal(["test"]);
       expect(fetchPizzasStub.calledOnce).to.be.true();
+    });
+
+    it("should set loaded to true", async () => {
+      await component.instance().componentDidMount();
+      expect(component.state().loaded).to.equal(true);
+    });
+  });
+  describe("When component is loaded", () => {
+    it("should remove loaded class on main and h1", () => {
+      component.setState({ loaded: true });
+      expect(component.find("main").hasClass("loading")).to.be.false();
+      expect(component.find("h1").hasClass("hidden")).to.be.false();
     });
   });
 });
