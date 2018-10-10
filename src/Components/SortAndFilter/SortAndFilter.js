@@ -27,6 +27,7 @@ class SortAndFilter extends Component {
           type="text"
           onChange={this.handleChange}
           value={this.props.filterText}
+          placeholder="Type to filter"
         />
         <button onClick={this.handleSort}>
           Sort

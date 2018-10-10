@@ -6,7 +6,7 @@
   width: 100%;
   z-index: -1;
   overflow: hidden;
-  background-color: rgba(240, 213, 47, 0.88);
+  background-color: rgb(255, 78, 9);
   transition: 0.25s;
 }
 #pizza-background.loaded {
